@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+.root {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header > .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+header > .logo > a > .logo--image {
+  width: 120px;
+}
+
+.header > .logo > .logo--text > p {
+  margin: 0;
+}
+
+.custom-hr {
+  height: 10px;
+  background-color: #369;
+}
+
+nav {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav > .nav--buttons {
+  display: flex;
+}
+
+nav > .nav--buttons > a {
+  text-decoration: none;
+  padding: 14px 16px;
+  background-color: #369;
+  color: white;
+  margin-left: 20px;
+}
+
+.about-section > .welcome--section {
+  display: flex;
+  padding: 20px;
+  border: 3px solid #369;
+}
+
+.welcome--section > .welcome--person {
+  width: 300px;
+}
+
+.about--congressman {
+  margin-left: 30px;
+}
+
+.about--title {
+  margin: 0;
+}
+
+.about--congressman > p {
+  text-align: justify;
+}
+
+.vmgo-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.vmgo--tile {
+  width: 30%;
+}
+
+.vmgo--tile-title {
+  text-align: center;
+}
+
+.vmgo--tile-title > h4 {
+  background-color: #369;
+  color: white;
+  padding: 8px;
+}
+
+.contactNum--title {
+  text-align: center;
+}
+
+.contactNum--title > h4 {
+  padding: 8px;
+  color: white;
+  background-color: #369;
+}
+
+.contactNum--tiles-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contactNum--tile > h5 {
+  margin: 0;
+}
+
+.getStarted-title {
+  text-align: center;
+}
+
+.getStarted-title > h4 {
+  padding: 8px;
+  color: white;
+  background-color: #369;
+}
+
+.getStarted--details {
+  display: flex;
+  flex-direction: column;
+}
+
+.getStarted--details > p {
+  margin-top: 0;
+}
+
+.getStarted--button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+}
+
+.getStarted--button > a {
+  padding: 16px 14px;
+  color: white;
+  text-decoration: none;
+  background-color: #369;
+}
+
+footer {
+  text-align: center;
+}
