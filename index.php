@@ -6,6 +6,10 @@ Acebo
 Mendoza
 -->
 
+<?php
+include 'script/php/connection.php'
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +17,7 @@ Mendoza
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/styles/styles.css" />
-    <link rel="icon" href="" />
+    <link rel="icon" href="assets/images//mandaluyong-city-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
@@ -143,6 +147,6 @@ Mendoza
 
 
 
-    <script src="script/index.js"></script>
+    <script src="script/js/index.js"></script>
   </body>
 </html>
