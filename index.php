@@ -42,18 +42,27 @@ include 'script/php/connection.php'
             <p>Social Welfare System</p>
           </div>
         </div>
+        <div class="nav--time">
+          <h4>Time is <span id="time"></span></h4>
+        </div>
       </header>
 
       <div class="custom-hr"> </div>
 
       <!-- NAVBAR SECTION -->
       <nav>
-        <div class="nav--time">
-          <h4>Time is <span id="time"></span></h4>
-        </div>
         <div class="nav--buttons">
-          <a href="login.php">Login</a>
-          <a href="register.php">Register</a>
+          <div class="nav--start">
+            <a class="button" href="pages/index.php">Home</a>
+            <a class="button" href="pages/assistance.php">Assistance</a>
+            <a class="button" href="pages/myAssistance.php">My Assistance</a>
+            <a class="button" href="pages/profile.php">Profile</a>
+            <a class="button" href="pages/about.php">About</a>
+          </div>
+          <div class="nav--end">
+            <a class="button" href="pages/login.php">Login</a>
+            <a class="button" href="pages/register.php">Register</a>
+          </div>
         </div>
       </nav>
 
@@ -129,13 +138,12 @@ include 'script/php/connection.php'
         <div class="getStarted--details">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, quibusdam expedita dolorem officia id nisi nesciunt enim. Deleniti totam delectus dolorem, magni quo atque ratione nihil libero aspernatur nesciunt porro?</p>
           <div class="getStarted--button">
-           <a href="application.php">Get Started on your Application Now</a>
+           <a class="button" href="pages/application.php">Get Started on your Application Now</a>
           </div>
         </div>
       </div>
 
       <!-- FOOTER -->
-
       <footer>
           <hr>
           <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>

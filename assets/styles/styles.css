@@ -15,6 +15,29 @@ body {
   margin-right: auto;
 }
 
+/* GLOBAL VAR */
+
+.invalid {
+  color: #ff0000;
+}
+
+.button {
+  transition: 0.5s ease-in-out;
+}
+
+.button:hover {
+  background-color: rgb(44, 122, 200);
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+
 header > .logo {
   display: flex;
   align-items: center;
@@ -35,24 +58,27 @@ header > .logo > a > .logo--image {
   background-color: #369;
 }
 
+/* NAVBAR */
+
 nav {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
+  margin: 30px 0;
 }
 
 nav > .nav--buttons {
   display: flex;
+  justify-content: space-between;
 }
 
-nav > .nav--buttons > a {
+.nav--start > a,
+.nav--end > a {
   text-decoration: none;
   padding: 14px 16px;
   background-color: #369;
   color: white;
   margin-left: 20px;
 }
+
+/* Home Page */
 
 .about-section > .welcome--section {
   display: flex;
@@ -146,6 +172,41 @@ nav > .nav--buttons > a {
   text-decoration: none;
   background-color: #369;
 }
+
+/* Login Page */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  margin: 10rem auto;
+  padding: 16px 18px;
+  background-color: #369;
+  border: 5px solid rgb(31, 50, 69);
+}
+
+.login-form > h1 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.form--text-box {
+  background-color: #7efeff70;
+}
+
+.form--text-box::placeholder {
+  color: white;
+}
+
+.eye {
+  margin-left: -30px;
+  cursor: pointer;
+}
+
+.form--submit-btn {
+  background-color: #7efeff70;
+}
+
+/* Footer */
 
 footer {
   text-align: center;
