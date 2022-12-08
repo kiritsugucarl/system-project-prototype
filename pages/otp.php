@@ -1,6 +1,9 @@
 <?php
 session_start();
-include '../script/php/connection.php'
+include '../script/php/connection.php';
+if (!isset($_SESSION['otpCred'])) {
+    header("Location:register.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +18,7 @@ include '../script/php/connection.php'
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
-    <title>LOGIN</title>
+    <title>IDENTITY CONFIRMATION</title>
   </head>
   <body>
     <div class="root">
@@ -58,66 +61,87 @@ include '../script/php/connection.php'
         </div>
       </nav>
 
-      <!-- LOGIN FORM -->
-      <div class="login-form">
-        <h1>Login</h1>
-        <form action="<?=$_SERVER['PHP_SELF'];?>" method="POST">
-          <span>Phone/Email &nbsp;:&nbsp;</span>
-          <input
-            class="form--text-box"
+      <!-- OTP ENTER -->
+      <div class="enterOTP-section">
+        <h3>Enter the PIN that was sent to your email/phone number :</h3>
+        <form
+        method="POST"
+        class="digit-group"
+        data-group-name="digits"
+        data-autosubmit="false"
+        autocomplete="off"
+        action="<?=$_SERVER['PHP_SELF'];?>"
+        >
+          <div class="digit-input">
+            <?php
+if (isset($_SESSION['otpCred'])) {
+    echo '
+      <input type="hidden" name="otpCred" value="' . $_SESSION['otpCred'] . '" />
+    ';
+}
+?>
+            <input
             type="text"
-            name="username"
-            placeholder="Enter Phone/Password"
-            autocomplete="off"
-          />
-          <br/>
-          <span>Password &nbsp; :&nbsp; </span>
-          <input
-            class="form--text-box"
-            type="password"
-            name="password"
-            placeholder="Enter Password"
-            autocomplete="off"
-            id="password"
-          />
-          <i class="eye far fa-eye" id="togglePassword"></i>
+            id="digit-1"
+            name="digit-1"
+            data-next="digit-2"
+            required
+            />
+            <input
+            type="text"
+            id="digit-2"
+            name="digit-2"
+            data-next="digit-3"
+            data-previous="digit-1"
+            required
+            />
+            <input
+            type="text"
+            id="digit-3"
+            name="digit-3"
+            data-next="digit-4"
+            data-previous="digit-2"
+            required
+            />
+            <input
+            type="text"
+            id="digit-4"
+            name="digit-4"
+            data-next="digit-5"
+            data-previous="digit-3"
+            required
+            />
+          </div>
           <br/>
           <br/>
           <div class="middle-button">
             <input
-              class="form--submit-btn button"
               type="submit"
-              name="login"
-              value="Log In"
+              name="submit_otp"
+              value="Submit OTP"
+              class="form--submit-btn button"
             />
           </div>
-        <script src="../script/js/showPassword.js"></script>
-
         </form>
-<?php
-if (isset($_POST['login'])) {
-    $uName = $_POST['username'];
-    $pWord = $_POST['password'];
 
-    $query = "SELECT id, username, password FROM " . $tableName . " WHERE username = '" . $uName . "' AND password = '" . $pWord . "';";
-    $sql = mysqli_query($conn, $query);
-    $retval = mysqli_fetch_array($sql);
-
-    if (is_array($retval)) {
-        $_SESSION["uName"] = $retval['username'];
-        $_SESSION["pWord"] = $retval['password'];
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="../script/js/otp.js"></script>
+        <?php
+if (isset($_POST['submit_otp'])) {
+    $otp = strval($_POST['digit-1']) + strval($_POST['digit-2']) + strval($_POST['digit-3']) + strval($_POST['digit-4']);
+    if ($otp == 10) {
+        header("Location:register-info.php");
     } else {
-        echo '<span class="invalid">Invalid username or password</span>';
-    }
-
-    if (isset($_SESSION["uName"])) {
-        header("Location:../index.php");
+        echo '
+            <span class="invalid">Wrong PIN, try again</span>
+            ';
     }
 }
 ?>
       </div>
+
     </div>
 
-    <script src="..script/js/time.js"></script>
+    <script src="../script/js/time.js"></script>
   </body>
 </html>

@@ -21,7 +21,7 @@ include 'script/php/connection.php'
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
-    <title>Welfare System Prototype</title>
+    <title>WELFARE SYSTEM</title>
   </head>
   <body>
     <div class="root">
@@ -31,7 +31,7 @@ include 'script/php/connection.php'
         <div class="logo">
           <a href="index.php">
             <img
-            src="assets/images/logo-placeholder-image.png"
+            src="assets/images/mandaluyong-city-logo.png"
             alt="logo"
             class="logo--image"
             />
@@ -155,6 +155,6 @@ include 'script/php/connection.php'
 
 
 
-    <script src="script/js/index.js"></script>
+    <script src="script/js/time.js"></script>
   </body>
 </html>

@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+** {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -23,10 +27,16 @@ body {
 
 .button {
   transition: 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 .button:hover {
   background-color: rgb(44, 122, 200);
+}
+
+.middle-button {
+  display: flex;
+  justify-content: center;
 }
 
 /* HEADER */
@@ -46,7 +56,7 @@ header > .logo {
 }
 
 header > .logo > a > .logo--image {
-  width: 120px;
+  width: 80px;
 }
 
 .header > .logo > .logo--text > p {
@@ -191,6 +201,7 @@ nav > .nav--buttons {
 
 .form--text-box {
   background-color: #7efeff70;
+  transition: 0.5 ease;
 }
 
 .form--text-box::placeholder {
@@ -204,6 +215,65 @@ nav > .nav--buttons {
 
 .form--submit-btn {
   background-color: #7efeff70;
+  padding: 8px;
+}
+
+/* Registration Form */
+.registration-form {
+  background-color: rgb(31, 50, 69);
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15%;
+  padding: 14px;
+}
+
+.registration-form > h1 {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+.form--form_section > form > p {
+  color: white;
+  text-align: center;
+}
+
+.focusable-text:focus {
+  width: 250px;
+}
+
+.regi-box {
+  width: 300px;
+}
+
+form > input:disabled {
+  color: white;
+  cursor: text;
+}
+
+/* OTP */
+.digit-group input[type="text"] {
+  width: 30px;
+  height: 50px;
+  background-color: #18182a;
+  border: none;
+  line-height: 50px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 200;
+  color: white;
+  margin: 0 2px;
+}
+
+.enterOTP-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: #369;
+  padding: 16px;
 }
 
 /* Footer */
