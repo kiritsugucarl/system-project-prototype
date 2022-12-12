@@ -5,6 +5,10 @@ include '../script/php/connection.php';
 if (!isset($_SESSION['otpCred'])) {
     header("Location:register.php");
 }
+
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location:../index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -304,7 +308,7 @@ echo '
                 />
                 <br/><br/>
 
-                <span>Siblings : </span>
+                <span>Siblings : </span><br/>
                 <input
                 class="form--text-box regi-box"
                 type="text"
@@ -351,7 +355,7 @@ echo '
                 />
                 <br/><br/>
 
-                <span>Children : </span>
+                <span>Children : </span> <br/>
                 <input
                 class="form--text-box regi-box"
                 type="text"
@@ -421,23 +425,16 @@ echo '
             <script src="../script/js/showPassword.js"></script>
         </div>
       </div>
-<?php
-if (isset($_POST['register'])) {
-
-}
-
-?>
-
+      <!-- FOOTER -->
+      <footer>
+          <hr>
+          <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>
+          <small>Created for the government of Mandaluyong City, Metro Manila</small> <br />
+          <small><i>Created by Rizal Technological University - Boni Campus Team.</i></small> <br />
+          <small><i>For inquiries, contact 0949 192 6132, or email at cdbpineda@rtu.edu.ph</i></small>
+      </footer>
     </div>
 
     <script src="../script/js/time.js"></script>
   </body>
 </html>
-
-<!--
-Notes i might forget
-
-The register-info should not go directly to success, no repeat emails or phones allowed
-It should go through database checking first before going to the next step
-Goodluck later carl!
- -->

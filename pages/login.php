@@ -1,6 +1,11 @@
 <?php
 session_start();
-include '../script/php/connection.php'
+include '../script/php/connection.php';
+
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location:../index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +57,23 @@ include '../script/php/connection.php'
             <a class="button" href="about.php">About</a>
           </div>
           <div class="nav--end">
-            <a class="button" href="login.php">Login</a>
-            <a class="button" href="register.php">Register</a>
+<?php
+// Verify if logged in
+if (isset($_SESSION['isLoggedIn'])) {
+    $sql = "SELECT user_fullName FROM users WHERE username ='" . $_SESSION['uName'] . "';";
+    $retval = mysqli_query($conn, $sql);
+    $active_user = mysqli_fetch_array($retval);
+    echo '
+                <p>Hello ' . $active_user['user_fullName'] . '. <a href="../script/php/logout.php" class="button">Logout.</a> </p>
+          ';
+}
+if (!isset($_SESSION['isLoggedIn'])) {
+    echo '
+    <a class="button" href="login.php">Login</a>
+    <a class="button" href="register.php">Register</a>
+  ';
+}
+?>
           </div>
         </div>
       </nav>
@@ -71,7 +91,8 @@ include '../script/php/connection.php'
             autocomplete="off"
           />
           <br/>
-          <span>Password &nbsp; :&nbsp; </span>
+          <br/>
+          <span>Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; </span>
           <input
             class="form--text-box"
             type="password"
@@ -111,11 +132,21 @@ if (isset($_POST['login'])) {
     }
 
     if (isset($_SESSION["uName"])) {
+        $_SESSION['isLoggedIn'] = true;
         header("Location:../index.php");
     }
 }
 ?>
       </div>
+
+      <!-- FOOTER -->
+      <footer>
+          <hr>
+          <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>
+          <small>Created for the government of Mandaluyong City, Metro Manila</small> <br />
+          <small><i>Created by Rizal Technological University - Boni Campus Team.</i></small> <br />
+          <small><i>For inquiries, contact 0949 192 6132, or email at cdbpineda@rtu.edu.ph</i></small>
+        </footer>
     </div>
 
     <script src="..script/js/time.js"></script>

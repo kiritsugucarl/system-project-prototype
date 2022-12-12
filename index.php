@@ -7,6 +7,7 @@ Mendoza
 -->
 
 <?php
+session_start();
 include 'script/php/connection.php'
 ?>
 
@@ -53,15 +54,30 @@ include 'script/php/connection.php'
       <nav>
         <div class="nav--buttons">
           <div class="nav--start">
-            <a class="button" href="pages/index.php">Home</a>
+            <a class="button" href="index.php">Home</a>
             <a class="button" href="pages/assistance.php">Assistance</a>
             <a class="button" href="pages/myAssistance.php">My Assistance</a>
             <a class="button" href="pages/profile.php">Profile</a>
             <a class="button" href="pages/about.php">About</a>
           </div>
           <div class="nav--end">
-            <a class="button" href="pages/login.php">Login</a>
-            <a class="button" href="pages/register.php">Register</a>
+<?php
+// Verify if logged in
+if (isset($_SESSION['isLoggedIn'])) {
+    $sql = "SELECT user_fullName FROM users WHERE username ='" . $_SESSION['uName'] . "';";
+    $retval = mysqli_query($conn, $sql);
+    $active_user = mysqli_fetch_array($retval);
+    echo '
+                <p>Hello ' . $active_user['user_fullName'] . '. <a href="script/php/logout.php" class="button">Logout.</a> </p>
+          ';
+}
+if (!isset($_SESSION['isLoggedIn'])) {
+    echo '
+    <a class="button" href="pages/login.php">Login</a>
+    <a class="button" href="pages/register.php">Register</a>
+  ';
+}
+?>
           </div>
         </div>
       </nav>

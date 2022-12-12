@@ -22,7 +22,11 @@ body {
 /* GLOBAL VAR */
 
 .invalid {
-  color: #ff0000;
+  color: #980505;
+}
+
+.success {
+  color: rgb(24, 168, 24);
 }
 
 .button {
@@ -37,6 +41,11 @@ body {
 .middle-button {
   display: flex;
   justify-content: center;
+}
+
+.status-quo {
+  color: rgb(36, 78, 119);
+  font-style: italic;
 }
 
 /* HEADER */
@@ -80,12 +89,17 @@ nav > .nav--buttons {
 }
 
 .nav--start > a,
-.nav--end > a {
+.nav--end > a,
+.nav--end > p > a {
   text-decoration: none;
   padding: 14px 16px;
   background-color: #369;
   color: white;
   margin-left: 20px;
+}
+
+.nav--end > p {
+  margin: 0;
 }
 
 /* Home Page */
@@ -218,14 +232,23 @@ nav > .nav--buttons {
   padding: 8px;
 }
 
+.form--date-box {
+  background-color: #7efeff70;
+}
+
+.form--select {
+  background-color: #7efeff70;
+}
+
 /* Registration Form */
 .registration-form {
-  background-color: rgb(31, 50, 69);
+  display: flex;
+  flex-direction: column;
   width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15%;
-  padding: 14px;
+  margin: 10rem auto;
+  padding: 16px 18px;
+  background-color: #369;
+  border: 5px solid rgb(31, 50, 69);
 }
 
 .registration-form > h1 {
@@ -252,6 +275,27 @@ form > input:disabled {
   cursor: text;
 }
 
+.registration-process {
+  padding: 16px;
+  width: 50%;
+  margin: 10rem auto;
+}
+
+.registration-process > h1 {
+  color: white;
+  background-color: #369;
+  text-align: center;
+}
+
+.registration--status {
+  padding: 0 1.5rem;
+}
+
+.registration--status > p > a {
+  text-decoration: none;
+  color: blue;
+}
+
 /* OTP */
 .digit-group input[type="text"] {
   width: 30px;
@@ -274,6 +318,230 @@ form > input:disabled {
   justify-content: center;
   background-color: #369;
   padding: 16px;
+  width: 50%;
+  margin: 10rem auto;
+}
+
+/* Assistance */
+
+.assistance-section {
+  padding: 20px;
+}
+
+.assistance--about-assistance > h4 {
+  background-color: #369;
+  color: white;
+  padding: 8px;
+  text-align: center;
+}
+
+.assistance--list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.assistance--block {
+  width: 30%;
+}
+
+.assistance--block > h4 {
+  background-color: #369;
+  color: white;
+  padding: 8px;
+}
+
+.assistance--block > a {
+  text-decoration: none;
+  color: white;
+  background-color: #369;
+  padding: 8px;
+  margin-left: auto;
+}
+
+/* My Assistance */
+.active-assistance-list {
+  padding: 16px;
+  width: 50%;
+  margin: 10rem auto;
+}
+
+.active-assistance-list > h1 {
+  color: white;
+  background-color: #369;
+  text-align: center;
+}
+
+.active-assistance-list > h4 {
+  padding: 0 1.5rem;
+}
+
+.active-assistance--section {
+  padding: 0 1.5rem;
+  margin: 1.5rem;
+  border: 2px solid #369;
+  text-align: center;
+}
+
+/* Application Form */
+.application-form {
+  padding: 14px;
+  width: 50%;
+  margin: 10rem auto;
+}
+
+.application-form1 {
+  padding: 14px;
+  width: 50%;
+  margin: 10rem auto;
+  background-color: #369;
+}
+
+.application-form > h3 {
+  background-color: #369;
+  padding: 16px;
+  text-align: center;
+}
+
+.application--details {
+  padding: 1.5rem;
+  margin: 1.5rem;
+  border: 2px solid #369;
+  text-align: center;
+}
+
+.application--details > h4 {
+  margin-top: 0;
+}
+
+.application--details > a {
+  background-color: #369;
+  text-decoration: none;
+  color: white;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+/* Application Success */
+.application-status {
+  padding: 14px;
+  width: 50%;
+  margin: 10rem auto;
+}
+
+.application-status > h1 {
+  background-color: #369;
+  padding: 16px;
+  text-align: center;
+}
+
+.application-status--details {
+  padding: 1.5rem;
+  margin: 1.5rem;
+  border: 2px solid #369;
+  text-align: center;
+}
+
+/* Profile */
+.profile-section {
+  padding: 14px;
+  width: 60%;
+  margin: 10rem auto;
+}
+
+.profile-section--header {
+  background-color: #369;
+  padding: 8px;
+  color: white;
+  text-align: center;
+}
+.profile-section--header > h2 {
+  margin: 0;
+}
+
+.profile-section > h3 {
+  background-color: #369;
+  color: white;
+  padding: 8px;
+}
+
+.profile-section--tile {
+  padding: 1.5rem;
+  margin: 1.5rem;
+  border: 2px solid #369;
+}
+
+.reminder {
+  font-size: 15px;
+  font-style: italic;
+  padding: 0 30px;
+}
+
+/* About Page */
+
+.personell-title {
+  background-color: #369;
+  padding: 8px;
+  color: white;
+  text-align: center;
+}
+
+.personell-section {
+  margin: 1.5rem;
+  display: flex;
+}
+
+.personell--tile {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.personell--tile > .personell-person {
+  width: 200px;
+  height: 200px;
+}
+
+.personell--info {
+  margin-left: 10px;
+}
+
+.personell--info > h4 {
+  margin-bottom: 0;
+}
+
+.personell--info > p {
+  font-size: 14px;
+}
+
+.addresses {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+.address--title > h4 {
+  background-color: #369;
+  color: white;
+  padding: 8px;
+  text-align: center;
+}
+
+.address-tiles {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address--tile {
+  width: 30%;
+  text-align: center;
+  border: 1px solid #369;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.address--tile:hover {
+  background-color: #369;
+  color: white;
+  border: 1px solid #18182a;
 }
 
 /* Footer */

@@ -1,5 +1,6 @@
 <?php
-include '../script/php/connection.php'
+session_start();
+include '../script/php/connection.php';
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +52,132 @@ include '../script/php/connection.php'
             <a class="button" href="about.php">About</a>
           </div>
           <div class="nav--end">
-            <a class="button" href="login.php">Login</a>
-            <a class="button" href="register.php">Register</a>
+          <?php
+// Verify if logged in
+if (isset($_SESSION['isLoggedIn'])) {
+    $sql = "SELECT user_fullName FROM users WHERE username ='" . $_SESSION['uName'] . "';";
+    $retval = mysqli_query($conn, $sql);
+    $active_user = mysqli_fetch_array($retval);
+    echo '
+                <p>Hello ' . $active_user['user_fullName'] . '. <a href="../script/php/logout.php" class="button">Logout.</a> </p>
+          ';
+}
+if (!isset($_SESSION['isLoggedIn'])) {
+    echo '
+    <a class="button" href="login.php">Login</a>
+    <a class="button" href="register.php">Register</a>
+  ';
+}
+?>
           </div>
         </div>
       </nav>
 
+      <!-- ABOUT SECTION -->
+      <div class="about-section">
+        <div class="welcome--section">
+          <img class="welcome--person" src="../assets/images/human-placeholder.webp"/>
+          <div class="about--congressman">
+            <h1 class="about--title">Name of Congressman</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quas, numquam nemo, veniam veritatis qui necessitatibus recusandae quos in fugiat, sequi ipsam provident eligendi doloribus labore nisi? Ducimus, minima autem!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONELL SECTION -->
+      <h2 class="personell-title">Personell of the Congressman</h2>
+      <div class="personell-section">
+        <div class="personell--tile">
+          <img src="../assets/images/human-placeholder.webp" class="personell-person"/>
+          <div class="personell--info">
+            <h4>Name of Person</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam voluptates, eum consectetur soluta sequi nisi ratione cum beatae velit recusandae ab nulla consequatur temporibus numquam est itaque voluptatibus. Tempora, accusantium.</p>
+          </div>
+        </div>
+
+        <div class="personell--tile">
+          <img src="../assets/images/human-placeholder.webp" class="personell-person"/>
+          <div class="personell--info">
+            <h4>Name of Person</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam voluptates, eum consectetur soluta sequi nisi ratione cum beatae velit recusandae ab nulla consequatur temporibus numquam est itaque voluptatibus. Tempora, accusantium.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="personell-section">
+        <div class="personell--tile">
+          <img src="../assets/images/human-placeholder.webp" class="personell-person"/>
+          <div class="personell--info">
+            <h4>Name of Person</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam voluptates, eum consectetur soluta sequi nisi ratione cum beatae velit recusandae ab nulla consequatur temporibus numquam est itaque voluptatibus. Tempora, accusantium.</p>
+          </div>
+        </div>
+
+        <div class="personell--tile">
+          <img src="../assets/images/human-placeholder.webp" class="personell-person"/>
+          <div class="personell--info">
+            <h4>Name of Person</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam voluptates, eum consectetur soluta sequi nisi ratione cum beatae velit recusandae ab nulla consequatur temporibus numquam est itaque voluptatibus. Tempora, accusantium.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT NUMBERS SECTION -->
+      <div class="contactNum-section">
+        <div class="contactNum--title">
+          <h4>Primary Contact Numbers</h4>
+        </div>
+        <div class="contactNum--tiles-section">
+          <div class="contactNum--tile">
+            <h5>Title of Contact</h5>
+            <p>123-456</p>
+          </div>
+          <div class="contactNum--tile">
+            <h5>Title of Contact</h5>
+            <p>123-456</p>
+          </div>
+          <div class="contactNum--tile">
+            <h5>Title of Contact</h5>
+            <p>123-456</p>
+          </div>
+          <div class="contactNum--tile">
+            <h5>Title of Contact</h5>
+            <p>123-456</p>
+          </div>
+          <div class="contactNum--tile">
+            <h5>Title of Contact</h5>
+            <p>123-456</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="addresses">
+        <div class="address--title">
+          <h4>Addresses</h4>
+        </div>
+        <div class="address-tiles">
+          <div class="address--tile">
+            <h5>Address</h5>
+            <p>Sample address 123, address 456, 789 City</p>
+          </div>
+          <div class="address--tile">
+            <h5>Address</h5>
+            <p>Sample address 123, address 456, 789 City</p>
+          </div>
+          <div class="address--tile">
+            <h5>Email Address</h5>
+            <p>sample_email@email.com</p>
+          </div>
+        </div>
+      </div>
+      <!-- FOOTER -->
+      <footer>
+          <hr>
+          <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>
+          <small>Created for the government of Mandaluyong City, Metro Manila</small> <br />
+          <small><i>Created by Rizal Technological University - Boni Campus Team.</i></small> <br />
+          <small><i>For inquiries, contact 0949 192 6132, or email at cdbpineda@rtu.edu.ph</i></small>
+      </footer>
     </div>
 
     <script src="../script/js/time.js"></script>

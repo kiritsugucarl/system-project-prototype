@@ -2,6 +2,10 @@
 session_start();
 include '../script/php/connection.php';
 unset($_SESSION['otpCred']);
+
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location:../index.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,9 +92,7 @@ unset($_SESSION['otpCred']);
             />
           </div>
         </form>
-        </div>
-      </div>
-      <?php
+        <?php
 if (isset($_POST['getOtp'])) {
     $otpCred = $_POST['otpCred'];
     $query = "SELECT * from users WHERE username = '" . $otpCred . "';";
@@ -99,12 +101,23 @@ if (isset($_POST['getOtp'])) {
     $_SESSION['otpCred'] = $otpCred;
 
     if (is_array($retval)) {
-        echo '<span class="invalid">Email/Phone already</span>';
+        echo '<span class="invalid">Email/Phone already used</span>';
     } else {
         header("Location:otp.php");
     }
 }
 ?>
+        </div>
+      </div>
+
+    <!-- FOOTER -->
+    <footer>
+          <hr>
+          <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>
+          <small>Created for the government of Mandaluyong City, Metro Manila</small> <br />
+          <small><i>Created by Rizal Technological University - Boni Campus Team.</i></small> <br />
+          <small><i>For inquiries, contact 0949 192 6132, or email at cdbpineda@rtu.edu.ph</i></small>
+    </footer>
     </div>
 
     <script src="../script/js/time.js"></script>

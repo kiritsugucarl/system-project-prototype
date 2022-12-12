@@ -5,6 +5,10 @@ if (!isset($_POST['register'])) {
     header("Location:register.php");
 }
 
+if (isset($_SESSION['isLoggedIn'])) {
+    header("Location:../index.php");
+}
+
 // Account Credentials
 $username = $_SESSION['otpCred'];
 $password = $_POST['password'];
@@ -71,7 +75,7 @@ $user_work_salary = $_POST['user_work_salary'];
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
-    <title>PROFILE</title>
+    <title>REGISTRATION</title>
   </head>
   <body>
     <div class="root">
@@ -108,8 +112,23 @@ $user_work_salary = $_POST['user_work_salary'];
             <a class="button" href="about.php">About</a>
           </div>
           <div class="nav--end">
-            <a class="button" href="login.php">Login</a>
-            <a class="button" href="register.php">Register</a>
+<?php
+// Verify if logged in
+if (isset($_SESSION['isLoggedIn'])) {
+    $sql = "SELECT user_fullName FROM users WHERE username ='" . $_SESSION['uName'] . "';";
+    $retval = mysqli_query($conn, $sql);
+    $active_user = mysqli_fetch_array($retval);
+    echo '
+                <p>Hello ' . $active_user['user_fullName'] . '. <a href="../script/php/logout.php" class="button">Logout.</a> </p>
+          ';
+}
+if (!isset($_SESSION['isLoggedIn'])) {
+    echo '
+    <a class="button" href="login.php">Login</a>
+    <a class="button" href="register.php">Register</a>
+  ';
+}
+?>
           </div>
         </div>
       </nav>
@@ -197,16 +216,27 @@ if (!$register) {
     die("Error");
 }
 ?>
-    <h3>Success</h3>
+    <h1>Registration <span class="success">Success!</span></h1>
 <?php
 $sql = "SELECT user_fullName FROM users WHERE user_fullName='" . $user_fullName . "';";
 $retval = mysqli_query($conn, $sql);
 $registered_user = mysqli_fetch_array($retval);
 // print_r($registered_user);
 ?>
-    <p>The user <?php echo $registered_user['user_fullName'] ?> is registered successfully.</p>
+    <div class="registration--status">
+      <h4>The user <?php echo $registered_user['user_fullName'] ?> has been registered <span class="success">successfully.</span></h4>
+      <p>You may now <a href="login.php">Login Here</a></p>
+    </div>
       </div>
 
+      <!-- FOOTER -->
+      <footer>
+          <hr>
+          <p><i>System Welfare Project Prototype. The visuals you see might be still subjective to change.</i></p>
+          <small>Created for the government of Mandaluyong City, Metro Manila</small> <br />
+          <small><i>Created by Rizal Technological University - Boni Campus Team.</i></small> <br />
+          <small><i>For inquiries, contact 0949 192 6132, or email at cdbpineda@rtu.edu.ph</i></small>
+        </footer>
     </div>
 
     <script src="../script/js/time.js"></script>
